@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="MVVMTest.Views.IsocenterCalculationSetupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MVVMTest.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!--<ResourceDictionary Source="/<YourAssemblyName>;component/<YourReferencedFileHere.xaml>" />-->
+                <ResourceDictionary Source="/MVVMTest;component/Views/Resources/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid Margin="0,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="auto"/>
+            <!--MaxHeight="200"/>-->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--Indexpoint for mask base plate-->
+
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Index point for mask base FFS"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="1" Name="IndexComboBox" 
+                  ItemsSource ="{Binding PossibleIndexForMaskBasePlate}"
+            SelectedValue="{Binding SelectedIndexForMaskBasePlate, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="1" Text="{Binding SelectedIndexForMaskBasePlate}"></TextBlock>
+
+        <!--HFS-->
+
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Text="HFS" HorizontalAlignment="Center"></TextBlock>
+
+        <TextBlock Grid.Column="0" Grid.Row="3" Text="Number of isocenters in HFS:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="3" 
+                  ItemsSource ="{Binding PossibleNrOfIsocentersHFS}"
+                  SelectedValue="{Binding SelectedNrOfIsocentersHFS, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="3" Text="{Binding SelectedNrOfIsocentersHFS}"></TextBlock>
+
+
+        <TextBlock Grid.Column="0" Grid.Row="4" Text="Minimum cranial coverage margin"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="4" Name ="CranialCoverageCMBB"             
+                  ItemsSource ="{Binding CoverageMarginHFSOptions}"
+                  SelectedValue="{Binding SelectedCoverageMarginCranial, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="4" Text="{Binding SelectedCoverageMarginCranial}"></TextBlock>
+
+        <!--Minimum delta HFS, should maybe be disabled when index F7 and 6 isos is chosen-->
+        <TextBlock Grid.Column="0" Grid.Row="5" Text="Minimum delta HFS:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="5" 
+            ItemsSource ="{Binding MinDeltaHFSOptions}"
+            SelectedValue="{Binding SelectedMinDeltaHFS, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="5" Text="{Binding SelectedMinDeltaHFS}"></TextBlock>
+        
+
+        <!--Maximum delta HFS-->
+        <TextBlock Grid.Column="0" Grid.Row="6" Text="Maximum delta HFS:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="6" 
+            ItemsSource ="{Binding MaxDeltaHFSOptions}"
+            SelectedValue="{Binding SelectedMaxDeltaHFS, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="6" Text="{Binding SelectedMaxDeltaHFS}"></TextBlock>
+
+        <!--JUNCTION-->
+
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="8" Text="Junction options" HorizontalAlignment="Center"></TextBlock>
+
+        <TextBlock Grid.Column="0" Grid.Row="9" Text="Minimum junction:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="9" ItemsSource ="{Binding MinimumJunctionOptions}"
+                  SelectedValue="{Binding SelectedMinJunction, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="9" Text="{Binding SelectedMinJunction}"></TextBlock>
+
+        <!--Depends on combobox above-->
+        <TextBlock Grid.Column="0" Grid.Row="10" Text="Maximum junction:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="10" ItemsSource ="{Binding MaximumJunctionOptions}"
+                  SelectedValue="{Binding SelectedMaxJunction, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="10" Text="{Binding SelectedMaxJunction}"></TextBlock>
+
+        <!--Setup for FFS-->
+        <Label Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="12" HorizontalAlignment="Center">FFS</Label>
+
+        <TextBlock Grid.Column="0" Grid.Row="13" Text="Max delta FFS:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="13" 
+            ItemsSource ="{Binding MaxDeltaFFSOptions}"
+            SelectedValue="{Binding SelectedMaxDeltaFFS, Mode=TwoWay}">
+        </ComboBox>
+        <TextBlock Grid.Column="2" Grid.Row="13" Text="{Binding SelectedMaxDeltaFFS}"></TextBlock>
+
+
+        <TextBlock Grid.Column="0" Grid.Row="14" Text="Minimum caudal coverage margin:"></TextBlock>
+        <ComboBox Grid.Column="1" Grid.Row="14" Name ="CaudalCoverageCMBB"             
+                  ItemsSource ="{Binding CoverageMarginFFSOptions}"
+                  SelectedValue="{Binding SelectedCoverageMarginCaudal, Mode=TwoWay}">
+        </ComboBox>
+        
+        <TextBlock Grid.Column="2" Grid.Row="14" Text="{Binding SelectedCoverageMarginCaudal}"></TextBlock>
+
+        <!--Color of button should be orange if there is a warning for any parameter that iso calc depends on and inactive (red?) if error-->
+        <Button Grid.Row="16" Grid.Column="0" Grid.ColumnSpan="2"
+                Command="{Binding CalculateIsocentersCommand}">Calculate isocenters</Button>
+
+
+    </Grid>
+</UserControl>
