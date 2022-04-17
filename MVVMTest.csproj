@@ -58,7 +58,12 @@
     <Compile Include="Constants\CouchInfo.cs" />
     <Compile Include="ViewModels\Base\ViewModelBase.cs" />
     <Compile Include="ViewModels\Commands\RelayCommand.cs" />
+    <Compile Include="ViewModels\IsocenterCalculationMainViewModel.cs" />
     <Compile Include="ViewModels\IsocenterCalculationSetupViewModel.cs" />
+    <Compile Include="Views\Converters\MillimeterToCentimeter.cs" />
+    <Compile Include="Views\IsocenterCalculationMainView.xaml.cs">
+      <DependentUpon>IsocenterCalculationMainView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\IsocenterCalculationSetupView.xaml.cs">
       <DependentUpon>IsocenterCalculationSetupView.xaml</DependentUpon>
     </Compile>
@@ -74,11 +79,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\IsocenterCalculationMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\IsocenterCalculationSetupView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Resources\Converters.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

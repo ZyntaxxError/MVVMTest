@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MVVMTest.Views"
+             xmlns:local="clr-namespace:MVVMTest"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -11,6 +11,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!--<ResourceDictionary Source="/<YourAssemblyName>;component/<YourReferencedFileHere.xaml>" />-->
                 <ResourceDictionary Source="/MVVMTest;component/Views/Resources/Styles.xaml"/>
+                <ResourceDictionary Source="/MVVMTest;component/Views/Resources/Converters.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
@@ -80,7 +81,7 @@
             ItemsSource ="{Binding MinDeltaHFSOptions}"
             SelectedValue="{Binding SelectedMinDeltaHFS, Mode=TwoWay}">
         </ComboBox>
-        <TextBlock Grid.Column="2" Grid.Row="5" Text="{Binding SelectedMinDeltaHFS}"></TextBlock>
+        <TextBlock Grid.Column="2" Grid.Row="5" Text="{Binding SelectedMinDeltaHFS, Converter={StaticResource millimeterToCentimeter}}"></TextBlock>
         
 
         <!--Maximum delta HFS-->

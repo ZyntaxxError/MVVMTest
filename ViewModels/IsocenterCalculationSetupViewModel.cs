@@ -20,12 +20,12 @@ namespace MVVMTest.ViewModels
     internal class IsocenterCalculationSetupViewModel : ViewModelBase
     {
         
-        public static int MinJunction = 7; // TODO: settings MinJunction, OptimalJunction, MaxJunction, MinDeltaHFS, MaxDeltaHFS, readback to setting and convert to mm
-        public static int OptimalJunction = 10;
-        public static int MaxJunction = 15;
-        public static int MinDeltaHFS = 17;
-        public static int MaxDeltaHFS = 20;
-        public static int MaxDeltaFFS = 22;
+        public static int MinJunction = 70; // TODO: settings MinJunction, OptimalJunction, MaxJunction, MinDeltaHFS, MaxDeltaHFS, readback to setting and convert to mm
+        public static int OptimalJunction = 100;
+        public static int MaxJunction = 150;  
+        public static int MinDeltaHFS = 170;
+        public static int MaxDeltaHFS = 200;
+        public static int MaxDeltaFFS = 220;
         public static int CoverageMarginCranial = 3;
         public static int CoverageMarginCaudal = 3;
 
@@ -37,15 +37,15 @@ namespace MVVMTest.ViewModels
             double patientLength = 1900;
             _possibleIndexForMaskBasePlate = new List<CouchInfo.CouchLongCoord>();
             GetPossibleIndexForMaskBasePlate(patientLength);
-            MinimumJunctionOptions = GetIntegerList(MinJunction, MaxJunction);
-            MaximumJunctionOptions = GetIntegerList(MinJunction, MaxJunction);
-            MinDeltaHFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaHFS);
-            MaxDeltaHFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaHFS);
+            MinimumJunctionOptions = GetIntegerList(MinJunction, MaxJunction, 10);
+            MaximumJunctionOptions = GetIntegerList(MinJunction, MaxJunction, 10);
+            MinDeltaHFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaHFS, 10);
+            MaxDeltaHFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaHFS, 10);
             SelectedMinJunction = MinJunction;
             SelectedMaxJunction = OptimalJunction;
             SelectedMaxDeltaHFS = MaxDeltaHFS;
             SelectedMinDeltaHFS = MinDeltaHFS;
-            MaxDeltaFFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaFFS);
+            MaxDeltaFFSOptions = GetIntegerList(MinDeltaHFS, MaxDeltaFFS, 10);
             SelectedMaxDeltaFFS = MaxDeltaFFS;
             CoverageMarginHFSOptions = GetIntegerList(fromInteger: -5, toInteger: 10);
             CoverageMarginFFSOptions = GetIntegerList(fromInteger: -5, toInteger: 10);
@@ -121,7 +121,7 @@ namespace MVVMTest.ViewModels
             { 
                 _selectedMinDeltaHFS = value;
                 OnPropertyChanged();
-                MaxDeltaHFSOptions = GetIntegerList(SelectedMinDeltaHFS, MaxDeltaHFS);
+                MaxDeltaHFSOptions = GetIntegerList(SelectedMinDeltaHFS, MaxDeltaHFS, 10);
                 if (SelectedMinDeltaHFS > SelectedMaxDeltaHFS)
                 {
                     SelectedMaxDeltaHFS = SelectedMinDeltaHFS;
@@ -180,7 +180,7 @@ namespace MVVMTest.ViewModels
                 {
                     SelectedMaxJunction = SelectedMinJunction;
                 }
-                MaximumJunctionOptions = GetIntegerList(SelectedMinJunction, MaxJunction);
+                MaximumJunctionOptions = GetIntegerList(SelectedMinJunction, MaxJunction, 10);
                 OnPropertyChanged(nameof(MaximumJunctionOptions));
             }
         }
@@ -309,7 +309,7 @@ namespace MVVMTest.ViewModels
         private List<int> GetIntegerList(int fromInteger, int toInteger, int integerStep = 1)
         {
             List<int> integerList = new List<int>();
-            for (int i = fromInteger; i <= toInteger; i++)
+            for (int i = fromInteger; i <= toInteger; i += integerStep)
             {
                 integerList.Add(i);
             }

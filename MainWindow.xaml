@@ -8,6 +8,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <view:IsocenterCalculationSetupView Grid.Column="0" Grid.Row="0"/>
+        <view:IsocenterCalculationMainView Grid.Column="0" Grid.Row="0"/>
     </Grid>
 </Window>
