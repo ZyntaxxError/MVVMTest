@@ -12,16 +12,26 @@ namespace MVVMTest.Views.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-
-            return (int)value / 10;
+            if (value != null)
+            {
+                return (int)value / 10;
+            }
+            else
+            {
+                return string.Empty;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return (int)value * 10;
+            if (value != null)
+            {
+                return (int)value * 10;
+            }
+            else
+            {
+                return null;
+            }
         }
-
-
-
     }
 }
